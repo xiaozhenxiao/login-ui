@@ -1,0 +1,114 @@
+<section class="content-header">
+    <h1>
+        新建活动
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-hand-spock-o"></i> 营销</a></li>
+        <li class="active">营销活动</li>
+        <li class="active">新建活动</li>
+    </ol>
+</section>
+<section class="content">
+	<div class="box box-default">
+		<form class="form-horizontal">
+			<div class="box-body">
+				<div class="form-group">
+					<div class="col-md-12">
+						<label class="col-md-2 control-label">活动类型</label>
+	                    <div class="col-md-3">
+	                       <select id="actType" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+		                      <option value="0" selected="selected"></option>
+		                      <option value="1">满减</option>
+	                    	</select>
+	                    </div>
+					</div>
+					<div style="height:50px"></div>
+					<div class="col-md-12">
+						<label  class="col-md-2 control-label">活动名称</label>
+	                    <div class="col-md-3">
+	                    	<input id="actName"  type="text" class="form-control" style="width: 80%">
+	                    </div>
+					</div>
+					<!--<div style="height:50px"></div>
+					<div class="col-md-12">
+						<label class="col-md-2 control-label">活动图片</label>
+						<div class="col-md-3">
+		                    <img height="100" width="100" src="/i/eg_tulip.jpg"  alt="上海鲜花港 - 郁金香" />
+						</div>
+					</div>-->
+					<div style="height:50px"></div>
+					<div class="col-md-12">
+						<label class="col-md-2 control-label">发放数量</label>
+						<div class="col-md-3">
+							<input id="issueNum" type="text" class="form-control" style="width:50%">
+						</div>
+					</div>
+					<div style="height:50px"></div>
+					<div class="col-md-12">
+						<label class="col-md-2 control-label">使用条件</label>
+						<div class="col-md-2">
+							<label class="col-md-5 control-label">满￥</label>
+							<div class="col-md-7">
+								<input id="amount" type="text" class="form-control " >
+							</div>
+						
+						</div>
+						<div class="col-md-2">
+							<label class="col-md-5 control-label">减￥</label>
+							<div class="col-md-7">
+								<input id="privilege" type="text" class="form-control " >
+							</div>
+						</div>
+					</div>
+					<div style="height:50px"></div>
+                   	<div class="col-md-12">
+                   		<label class="col-md-2 control-label">活动对象</label>
+	                    <div class="col-md-2">
+	                       <select id="actObject" class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+		                      <option value="0" selected="selected"></option>
+		                      <option value="1">新祖册会员</option>
+	                    	</select>
+	                    </div>
+                   	</div>
+                   	<div style="height:50px"></div>
+                   	<div class="col-md-12">
+                   		<label for="inputStartTime" class="col-md-2 control-label">活动时间</label>
+		                <div class="col-md-10">
+	                        <input   type="text" id="datetime_begin" value="" readonly/> 至
+		                	<input  type="text" id="datetime_end" value="" readonly/>
+		                </div>
+                   	</div>
+                   	<div style="height:50px"></div>
+                   	<div class="col-md-12">
+                   		<label class="col-md-2 control-label">适用门店</label>
+	                    <div class="col-md-2">
+	                       <button class="btn btn-block btn-primary">选择门店</button>
+	                    </div>
+                   	</div>
+                    <div style="height:50px"></div>
+                   	<div class="col-md-12">
+                   		<label class="col-md-2 control-label">活动说明</label>
+                   		<div class="col-md-5">
+                   			<textarea id="details" class="form-control" rows="3" cols="20"></textarea>
+                    	</div>
+                   	</div><br>
+                    <div style="height:50px"></div>
+               
+                   	<div style="height:50px"></div>
+                   	<div class="col-md-12">
+                   		<div class="col-md-3"></div>
+               		    <div class="col-md-1">
+               		  		<a><button ng-click="creatAct()" class="btn btn-block btn-primary" >提交</button></a>
+               		  	</div>
+               		  	<div class="col-md-1">
+               		  		<a href="#/marketingActivity"><button class="btn btn-block btn-primary" >返回</button></a>
+               		  	</div>
+                   	</div>
+				</div>
+			</div>
+		
+		</form>
+	
+	</div>
+
+</section>

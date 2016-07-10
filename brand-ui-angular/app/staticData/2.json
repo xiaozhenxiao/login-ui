@@ -1,0 +1,11 @@
+{
+"tabel":[{"actType":"节日", "actName":"父亲节感恩促销", "actTime": "2016/6/28至2016/6/29","actTool":"","getterSum":10,"useSum":10,"channel":"短信","state":"进行中"},
+  {"actType":"店庆", "actName":"十年店庆感恩促销", "actTime": "2016/6/28至2016/6/29","actTool":"","getterSum":10,"useSum":10,"channel":"短信","state":"待发布"},
+  {"actType":"节日", "actName":"活动活动2", "actTime": "2016/6/28至2016/6/29","actTool":"","getterSum":10,"useSum":10,"channel":"短信","state":"进行中"},
+  {"actType":"节日", "actName":"活动活动3", "actTime": "2016/6/28至2016/6/29","actTool":"","getterSum":10,"useSum":10,"channel":"短信","state":"已下架"},
+  {"actType":"节日", "actName":"活动活动4", "actTime": "2016/6/28至2016/6/29","actTool":"","getterSum":10,"useSum":10,"channel":"短信","state":"已结束"},
+  {"actType":"节日", "actName":"活动活动5", "actTime": "2016/6/28至2016/6/29","actTool":"","getterSum":10,"useSum":10,"channel":"短信","state":"待发布"}
+  ],
+"label":[{"":"","":""},{"":"","":""}]
+
+}

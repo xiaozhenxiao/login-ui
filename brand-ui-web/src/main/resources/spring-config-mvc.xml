@@ -1,0 +1,98 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+       xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+       xmlns:mvc="http://www.springframework.org/schema/mvc"
+       xmlns:context="http://www.springframework.org/schema/context"
+       xsi:schemaLocation="
+           http://www.springframework.org/schema/beans
+           http://www.springframework.org/schema/beans/spring-beans.xsd
+           http://www.springframework.org/schema/context
+           http://www.springframework.org/schema/context/spring-context.xsd
+           http://www.springframework.org/schema/mvc
+           http://www.springframework.org/schema/mvc/spring-mvc.xsd">
+
+    <!--━━━━━━神兽出没━━━━━━-->
+    <!--　　　┏┓　　　┏┓-->
+    <!--　　┏┛┻━━━┛┻┓-->
+    <!--　　┃　　　　　　　┃-->
+    <!--　　┃　　　━　　　┃-->
+    <!--　　┃　┳┛　┗┳　┃-->
+    <!--　　┃　　　　　　　┃-->
+    <!--　　┃　　　┻　　　┃-->
+    <!--　　┃　　　　　　　┃-->
+    <!--　　┗━┓　　　┏━┛-->
+    <!--　　　　┃　　　┃神兽保佑, 永无BUG!-->
+    <!--　　　　┃　　　┃Code is far away from bug with the animal protecting-->
+    <!--　　　　┃　　　┗━━━┓-->
+    <!--　　　　┃　　　　　　　┣┓-->
+    <!--　　　　┃　　　　　　　┏┛-->
+    <!--　　　　┗┓┓┏━┳┓┏┛-->
+    <!--　　　　　┃┫┫　┃┫┫-->
+    <!--　　　　　┗┻┛　┗┻┛-->
+    <!--━━━━━━感觉萌萌哒━━━━━━-->
+    <!-- spring mvc related -->
+
+    <!-- mvc controller -->
+    <context:component-scan base-package="com.hanyun.platform.brand.ui.web">
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Service"/>
+        <context:exclude-filter type="annotation" expression="org.springframework.stereotype.Repository"/>
+    </context:component-scan>
+
+    <mvc:interceptors>
+        <mvc:interceptor>
+            <mvc:mapping path="/**"/>
+            <mvc:exclude-mapping path="/favicon.ico"/>
+            <mvc:exclude-mapping path="/static/**"/>
+            <mvc:exclude-mapping path="/assets/**"/>
+            <mvc:exclude-mapping path="/login"/>
+            <mvc:exclude-mapping path="/logout"/>
+            <mvc:exclude-mapping path="/brand/**"/>
+            <bean class="com.hanyun.platform.brand.ui.handler.PrivilegeInterceptor"/>
+        </mvc:interceptor>
+    </mvc:interceptors>
+
+    <mvc:annotation-driven>
+        <mvc:message-converters register-defaults="true">
+            <bean id="jacksonMessageConverter" class="org.springframework.http.converter.json.MappingJackson2HttpMessageConverter">
+                <property name="supportedMediaTypes">
+                    <list>
+                        <value>text/html;charset=UTF-8</value>
+                        <value>text/plain;charset=UTF-8</value>
+                        <value>application/json;charset=UTF-8</value>
+                        <value>application/*+json;charset=UTF-8</value>
+                    </list>
+                </property>
+                <property name="objectMapper">
+                    <bean class="com.fasterxml.jackson.databind.ObjectMapper">
+                        <property name="serializationInclusion">
+                            <value type="com.fasterxml.jackson.annotation.JsonInclude$Include">NON_NULL</value>
+                        </property>
+                        <property name="dateFormat">
+                            <bean class="java.text.SimpleDateFormat">
+                                <constructor-arg value="yyyy-MM-dd HH:mm:ss"/>
+                            </bean>
+                        </property>
+                    </bean>
+                </property>
+            </bean>
+        </mvc:message-converters>
+    </mvc:annotation-driven>
+
+    <mvc:default-servlet-handler/>
+
+    <bean id="freemarkerConfig" class="org.springframework.web.servlet.view.freemarker.FreeMarkerConfigurer">
+        <property name="templateLoaderPath" value="/WEB-INF/views/"/>
+        <!-- 编码设置 -->
+        <property name="freemarkerSettings">
+            <props>
+                <prop key="defaultEncoding">UTF-8</prop>
+            </props>
+        </property>
+    </bean>
+    <bean id="freeMarkerViewResolver" class="org.springframework.web.servlet.view.freemarker.FreeMarkerViewResolver">
+        <property name="prefix" value=""/>
+        <property name="suffix" value=".ftl"/>
+        <property name="contentType" value="text/html; charset=UTF-8"/>
+    </bean>
+
+</beans>

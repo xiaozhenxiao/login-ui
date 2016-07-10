@@ -1,0 +1,61 @@
+<section class="content-header">
+    <h1>
+        图片上传与展示
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa  fa-balance-scale"></i> 例子</a></li>
+        <li class="active">图片上传与展示</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <form id="imgForm" enctype="multipart/form-data">
+                    <div class="box-header">
+                        <h3 class="box-title">上传图片</h3>
+                    </div>
+                    <div class="box-body">
+                        <div class="col-md-3">&nbsp;</div>
+                        <div class="col-md-6">
+                            <div class="form-group">
+                                <label class="col-md-4 control-label" style="text-align: right;white-space: nowrap">品牌id：</label>
+                                <div class="col-md-8">
+                                    <input type="text" class="form-control" id="imgName" name="param_brand_id" placeholder="请输入品牌id" style="width: 80%">
+                                </div>
+                                <div class="col-md-12" style="height: 40px;"></div>
+                                <label class="col-md-4 control-label" style="text-align: right;white-space: nowrap">选择图片：</label>
+                                <div class="col-md-8">
+                                    <input type="file" file-model="myFile" class="form-control" id="imgFile" name="param_logo_file" style="width: 80%">
+                                </div>
+                                <div class="col-md-12" style="height: 40px;"></div>
+                                <label class="col-md-4 control-label" style="text-align: right;white-space: nowrap">图片预览：</label>
+                                <div class="col-md-8">
+                                    <img type="file" ng-src="{{imageSrc}}" accept="image/*" id="image" style="max-width:300px;max-height:300px;margin:0 auto;display:block;"/>
+                                </div>
+                                <div class="col-md-12" style="height: 80px;"></div>
+                                <div class="col-md-12">
+                                    <button type="submit" ng-click="reset();" class="btn btn-default pull-right" style="margin-right: 5%;">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;
+                                    <button type="submit" ng-click="upload();" class="btn btn-primary pull-right" style="margin-right: 1%;">上传</button>
+                                </div>
+                            </div>
+                        </div>
+                        <div class="col-md-3">&nbsp;</div>
+                    </div>
+                </form>
+            </div>
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">图片展示</h3>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-12">
+                        <div class="form-group">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

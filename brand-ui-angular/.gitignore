@@ -1,0 +1,17 @@
+.grunt/
+.settings/
+.classpath
+.project
+.idea/
+.tmp/
+/node
+/npm-debug.log
+/node_modules
+/bower_components
+/docs
+/coverage
+/test
+.DS_Store
+
+
+/dist

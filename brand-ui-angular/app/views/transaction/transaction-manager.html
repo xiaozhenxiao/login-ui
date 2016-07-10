@@ -1,0 +1,310 @@
+<style type="text/css">
+    .color-red {
+        color: red;
+    }
+    .color-blue {
+        color: #007fff;
+    }
+</style>
+<section class="content-header">
+    <h1>
+        交易管理
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa  fa-balance-scale"></i> 交易</a></li>
+        <li class="active">交易管理</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-primary">
+                <form class="form-horizontal">
+                    <div class="box-header">
+                        <h3 class="box-title">查询条件</h3><div class="box-tools pull-right">
+                        <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>
+                    </div>
+                    </div>
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-1 control-label" style="text-align: right;white-space: nowrap">会员姓名：</label>
+                            <div class="col-md-3">
+                                <input type="text" ng-model="filter_user_name" class="form-control" id="inputName" placeholder="请输入会员姓名" style="width: 80%">
+                            </div>
+                            <label for="inputPhone" class="col-md-1 control-label" style="text-align: right;white-space: nowrap">手机号：</label>
+                            <div class="col-md-3">
+                                <input type="text" ng-model="filter_phone" class="form-control" id="inputPhone" placeholder="请输入手机号" style="width: 80%">
+                            </div>
+                            <label for="inputPayment" class="col-md-1 control-label" style="text-align: right;white-space: nowrap">支付方式：</label>
+                            <div class="col-md-3">
+                                <select class="form-control" ng-model="filter_pay_type" id="inputPayment" style="width: 80%;text-align: center">
+                                    <option value="">-请选择支付方式-</option>
+                                    <option value="刷卡支付">刷卡支付</option>
+                                    <option value="现金">现金</option>
+                                    <option value="微信">微信</option>
+                                    <option value="支付宝">支付宝</option>
+                                    <option value="百度钱包">百度钱包</option>
+                                </select>
+                            </div>
+                            <br>
+                            <br>
+                            <!--<label for="inputMarket" class="col-md-1 control-label" style="text-align: right;white-space: nowrap">营销活动：</label>-->
+                            <!--<div class="col-md-3">-->
+                            <!--<select class="form-control" ng-model="filter_market_type" id="inputMarket" style="width: 80%;text-align: center">-->
+                            <!--<option value="">-请选择营销活动-</option>-->
+                            <!--<option>买一赠一</option>-->
+                            <!--<option>满百减五</option>-->
+                            <!--<option>八折优惠</option>-->
+                            <!--<option>五折优惠</option>-->
+                            <!--</select>-->
+                            <!--</div>-->
+                            <label for="inputPayment" class="col-md-1 control-label" style="text-align: right;white-space: nowrap">消费时间从：</label>
+                            <div class="col-md-3">
+                                <input type="text" value="" class="form-control" id="inputBeginTime" placeholder="请选择起始时间" style="width: 80%;background-color: white" readonly>
+                            </div>
+                            <label for="inputPayment" class="col-md-1 control-label" style="text-align: right;white-space: nowrap">至：</label>
+                            <div class="col-md-3">
+                                <input type="text" value="" class="form-control" id="inputEndTime" placeholder="请选择结束时间" style="width: 80%;background-color: white" readonly>
+                            </div>
+                            <br><br><br>
+                            <div class="col-md-12"><button type="submit" ng-click="reset();" class="btn btn-default pull-right" style="margin-right: 5%;">重置</button>&nbsp;&nbsp;&nbsp;&nbsp;<button type="submit" ng-click="transactionFilter(1);" class="btn btn-primary pull-right" style="margin-right: 1%;">查询</button></div>
+                        </div>
+                    </div>
+                </form>
+            </div>
+            <!--<div class="box box-default" id="speed_page_detail">-->
+            <!--<div class="box-header">-->
+            <!--<h3 class="box-title">统计信息</h3>-->
+            <!--<div class="box-tools pull-right">-->
+            <!--<button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i></button>-->
+            <!--<button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i></button>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="box-body" style="text-align: center">-->
+            <!--<div class="col-md-2">-->
+            <!--<div class="box box-info">-->
+            <!--<div class="box-body info">-->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="font-size: 30px;font-weight: bold;color: #007fff;">{{transactionManagerStatistics.price/10000 | number : 2}}</div>-->
+            <!--<div style="color: #999;">总交易额（万元）-->
+            <!--<a href="javascript:void(0);">-->
+            <!--<span id="trade_money_title" data-container="body" data-toggle="popover"-->
+            <!--data-html="true" data-placement="bottom" data-title=""-->
+            <!--data-content="查询时间段总交易金额" class="glyphicon glyphicon-question-sign"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+            <!--<div class="box box-info">-->
+            <!--<div class="box-body info">-->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="font-size: 30px;font-weight: bold;color: #007fff;">{{transactionManagerStatistics.count}}</div>-->
+            <!--<div style="color: #999;">总交易量（次）-->
+            <!--<a href="javascript:void(0);">-->
+            <!--<span id="trade_volume_title" data-container="body" data-toggle="popover"-->
+            <!--data-html="true" data-placement="bottom" data-title=""-->
+            <!--data-content="查询时间段总交易量" class="glyphicon glyphicon-question-sign"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+            <!--<div class="box box-info">-->
+            <!--<div class="box-body info">-->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="font-size: 30px;font-weight: bold;color: #007fff;">{{transactionManagerStatistics.priceDaily/10000 | number : 2}}</div>-->
+            <!--<div style="color: #999;">日交易额（万元）-->
+            <!--<a href="javascript:void(0);">-->
+            <!--<span id="trade_money_day_title" data-container="body" data-toggle="popover"-->
+            <!--data-html="true" data-placement="bottom" data-title=""-->
+            <!--data-content="查询时间段日均交易金额" class="glyphicon glyphicon-question-sign"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+            <!--<div class="box box-info">-->
+            <!--<div class="box-body info">-->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="font-size: 30px;font-weight: bold;color: #007fff;">{{transactionManagerStatistics.countDaily}}</div>-->
+            <!--<div style="color: #999;">日交易量（次）-->
+            <!--<a href="javascript:void(0);">-->
+            <!--<span id="trade_volume_day_title" data-container="body" data-toggle="popover"-->
+            <!--data-html="true" data-placement="bottom" data-title=""-->
+            <!--data-content="查询时间段日均交易量" class="glyphicon glyphicon-question-sign"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+            <!--<div class="box box-info">-->
+            <!--<div class="box-body info">-->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="font-size: 30px;font-weight: bold;" ng-class="{true: 'color-red', false: 'color-blue'}[transactionManagerStatistics.circleIncrement.indexOf('-')>-1 && transactionManagerStatistics.circleIncrement.length>1]">{{transactionManagerStatistics.circleIncrement}}</div>-->
+            <!--<div style="color: #999;">环比增长-->
+            <!--<a href="javascript:void(0);">-->
+            <!--<span id="chain_title" data-container="body" data-toggle="popover"-->
+            <!--data-html="true" data-placement="bottom" data-title=""-->
+            <!--data-content="查询时间段总交易额环比增长率" class="glyphicon glyphicon-question-sign"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--<div class="col-md-2">-->
+            <!--<div class="box box-info">-->
+            <!--<div class="box-body info">-->
+            <!--<div class="row">-->
+            <!--<div class="col-md-12">-->
+            <!--<div style="font-size: 30px;font-weight: bold;" ng-class="{true: 'color-red', false: 'color-blue'}[transactionManagerStatistics.yoyIncrement.indexOf('-')>-1 && transactionManagerStatistics.yoyIncrement.length>1] ">{{transactionManagerStatistics.yoyIncrement}}</div>-->
+            <!--<div style="color: #999;">同比增长-->
+            <!--<a href="javascript:void(0);">-->
+            <!--<span id="yoy_title" data-container="body" data-toggle="popover"-->
+            <!--data-html="true" data-placement="bottom" data-title=""-->
+            <!--data-content="查询时间段总交易额同比增长率" class="glyphicon glyphicon-question-sign"></span>-->
+            <!--</a>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <!--</div>-->
+            <div class="box box-success">
+                <div class="box-header">
+                    <h3 class="box-title">查询列表</h3>
+                </div>
+                <div class="box-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th>序号</th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('order_id');">交易编号<div ng-class="transaction_style_transaction_id"></div></a></th>
+                            <!--<th><a class="none-decoration" href="" ng-click="sortPages('userId');">会员ID<div ng-class="transaction_style_user_id"></div></a></th>-->
+                            <th>会员姓名</th>
+                            <th>手机号</th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('create_time');">消费时间<div ng-class="transaction_style_transaction_time"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('order_price');">消费金额<div ng-class="transaction_style_order_price"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('pay_type');">支付方式<div ng-class="transaction_style_pay_type"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('activity_name');">营销活动<div ng-class="transaction_style_activity_name"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('order_status');">状态<div ng-class="transaction_style_order_status"></div></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="transactionManager in transactionManagerList">
+                            <td>{{$index+1}}</td>
+                            <td><div class="page-col-common"><a href="" ng-click="detail(transactionManager)">{{transactionManager.order_id}}</a></div></td>
+                            <!--<td><div class="page-col-common">{{transactionManager.userId}}</div></td>-->
+                            <td><div class="page-col-common">{{users[transactionManager.user_id].name}}</div></td>
+                            <td><div class="page-col-common">{{users[transactionManager.user_id].phone}}</div></td>
+                            <td><div class="page-col-common">{{transactionManager.create_time}}</div></td>
+                            <td><div class="page-col-common">{{transactionManager.order_price | number : 2}}元</div></td>
+                            <td><div class="page-col-common">{{transactionManager.pay_type}}</div></td>
+                            <td><div class="page-col-common">{{transactionManager.activity_name}}</div></td>
+                            <td><div class="page-col-common">{{transactionManager.order_status}}</div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <div class="box-footer">
+                    <div class="col-sm-12" style="text-align: right">
+                        <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                            <ul class="pagination">
+                                <li class="paginate_button previous">
+                                    <a style="border: none;font-weight: bold;color:black;">总页数:{{totalPageNumber}}</a>
+                                </li>
+                                <li ng-if="curPageNo==1" class="paginate_button previous disabled">
+                                    <a href="">首页</a>
+                                </li>
+                                <li ng-if="curPageNo>1" class="paginate_button previous">
+                                    <a href="" ng-click="transactionFilter(1)">首页</a>
+                                </li>
+                                <li ng-if="curPageNo==1" class="paginate_button previous disabled">
+                                    <a href="">上一页</a>
+                                </li>
+                                <li ng-if="curPageNo>1" class="paginate_button previous">
+                                    <a href="" ng-click="transactionFilter(curPageNo-1)">上一页</a>
+                                </li>
+                                <li ng-if="curPageNo>5" class="paginate_button ">
+                                    <a href="" style="border: none;">...</a>
+                                </li>
+                                <li ng-repeat="pageNo in pages" class="paginate_button" ng-class="{true : 'active', false : ''}[curPageNo==pageNo]">
+                                    <a href="" ng-click="transactionFilter(pageNo)">{{pageNo}}</a>
+                                </li>
+                                <li ng-if="curPageNo<totalPageNumber-4" class="paginate_button ">
+                                    <a href="" style="border: none;">...</a>
+                                </li>
+                                <li ng-if="curPageNo==totalPageNumber" class="paginate_button next disabled">
+                                    <a href="">下一页</a>
+                                </li>
+                                <li ng-if="curPageNo<totalPageNumber" class="paginate_button next">
+                                    <a href="" ng-click="transactionFilter(curPageNo+1)">下一页</a>
+                                </li>
+                                <li ng-if="curPageNo==totalPageNumber" class="paginate_button next disabled">
+                                    <a href="">尾页</a>
+                                </li>
+                                <li ng-if="curPageNo<totalPageNumber" class="paginate_button next">
+                                    <a href="" ng-click="transactionFilter(totalPageNumber)">尾页</a>
+                                </li>
+                                <!--<li class="paginate_button">-->
+                                <!--<a href="" style="border:none;"><input ng-model="myPage" style="width: 50px;height: 100%;" type="text" value=""></a>-->
+                                <!--</li>-->
+                                <!--<li class="paginate_button next">-->
+                                <!--<a href="" ng-click="transactionFilter(myPage)">跳转</a>-->
+                                <!--</li>-->
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div ng-class="{'modal fade in':model_in_edit}" ng-style="model_style_edit" style="display:none">
+    <div class="modal-dialog page-dialog" style="width:40%;height: 80%;margin-top: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: 0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">×</button>
+                <h4 class="modal-title">详细信息<small>{{name}}</small></h4>
+            </div>
+            <div class="modal-body">
+                <div style="margin-top: 10px;" class="col-md-6">交易编号：{{transactionDetail.serviceId}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">会员ID：{{transactionDetail.userId}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">会员姓名：{{transactionDetail.userName}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">手机号：{{transactionDetail.phone}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">消费时间：{{transactionDetail.serviceTime}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">消费金额：{{transactionDetail.price}}元</div>
+                <div style="margin-top: 10px;" class="col-md-6">支付方式：{{transactionDetail.payType}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">营销活动：{{transactionDetail.activityName}}</div>
+                <div style="margin-top: 10px;" class="col-md-6">状态：{{transactionDetail.orderStatus}}</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" style="margin-top: 30px;" class="btn btn-default" data-dismiss="modal" ng-click="close()">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-class="{'modal-backdrop fade in':model_background_in}" ng-style="model_background_style" style="display: none"></div>
+<div ng-class="{'modal-backdrop fade in':model_background_in_loading}" ng-style="model_background_style_loading" style="display:none"></div>
+<div class="uil-spin-css" ng-style="loading_style" style="-webkit-transform:scale(0.25);margin-top: -20px;display: none;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div>

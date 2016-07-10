@@ -1,0 +1,109 @@
+<section class="content-header">
+    <h1>
+        交易统计
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-balance-scale"></i> 交易</a></li>
+        <li class="active">交易统计</li>
+    </ol>
+</section>
+<section class="content main-page">
+    <div class="row">
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">营业收入统计</h3>
+                    <div class="box-tools btn-group pull-left filter-tab">
+                        <button class="btn btn-default btn-sm active" ng-class="{active: income_active=='sevenDay'}" ng-click="showIncome('sevenDay')">
+                            近七天
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: income_active=='oneMonth'}" ng-click="showIncome('oneMonth')">
+                            近一个月
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: income_active=='threeMonth'}" ng-click="showIncome('threeMonth')">
+                            近三个月
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div id="income" style="height: 300px;"><div class='uil-spin-css' style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">消费次数统计</h3>
+                    <div class="box-tools btn-group pull-left filter-tab">
+                        <button class="btn btn-default btn-sm active" ng-class="{active: times_active=='sevenDay'}" ng-click="showTimes('sevenDay')">
+                            近七天
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: times_active=='oneMonth'}" ng-click="showTimes('oneMonth')">
+                            近一个月
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: times_active=='threeMonth'}" ng-click="showTimes('threeMonth')">
+                            近三个月
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div id="times" style="height: 300px;"><div class='uil-spin-css' style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">平均消费额统计</h3>
+                    <div class="box-tools btn-group pull-left filter-tab">
+                        <button class="btn btn-default btn-sm active" ng-class="{active: once_active=='sevenDay'}" ng-click="showOnce('sevenDay')">
+                            近七天
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: once_active=='oneMonth'}" ng-click="showOnce('oneMonth')">
+                            近一个月
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: once_active=='threeMonth'}" ng-click="showOnce('threeMonth')">
+                            近三个月
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div id="once" style="height: 300px;"><div class='uil-spin-css' style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">会员验证方式统计</h3>
+                    <div class="box-tools btn-group pull-left filter-tab">
+                        <button class="btn btn-default btn-sm active" ng-class="{active: check_src_active=='sevenDay'}" ng-click="showCheckSrcTimes('sevenDay')">
+                            近七天
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: check_src_active=='oneMonth'}" ng-click="showCheckSrcTimes('oneMonth')">
+                            近一个月
+                        </button>
+                        <button class="btn btn-default btn-sm" ng-class="{active: check_src_active=='threeMonth'}" ng-click="showCheckSrcTimes('threeMonth')">
+                            近三个月
+                        </button>
+                    </div>
+                </div>
+                <div class="box-body">
+                    <div id="checkSrcTimes" class="col-md-12" style="height: 300px;"><div style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-info">
+                <div class="box-header">
+                    <h3 class="box-title">交易指标分布</h3>
+                </div>
+                <div class="box-body">
+                    <div id="report4" class="col-md-4" style="height: 300px;"><div style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                    <div id="report5" class="col-md-4" style="height: 300px;"><div style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                    <div id="report6" class="col-md-4" style="height: 300px;"><div style="-webkit-transform:scale(0.15);margin-top: -20px;width: 100%;height: 100%;"><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div><div><div></div></div></div></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

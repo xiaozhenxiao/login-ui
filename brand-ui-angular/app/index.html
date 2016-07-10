@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html ng-app="pulse">
+
+   <head>
+    <meta charset="utf-8">
+     <meta http-equiv="pragma" content="no-cache" />
+     <meta http-equiv="cache-control" content="no-cache" />
+     <meta http-equiv="expires" content="0" />
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <title>管理平台</title>
+    <!-- Tell the browser to be responsive to screen width -->
+    <meta content="width=device-width, initial-scale=1, maximum-scale=1, user-scalable=no" name="viewport">
+    <!-- build:css(.) styles/vendor.css -->
+    <link rel="stylesheet" href="bower_components/bootstrap/dist/css/bootstrap.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/font-awesome/css/font-awesome.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/ionicons/css/ionicons.min.css">
+    <link rel="stylesheet" href="bower_components/admin-lte/dist/css/AdminLTE.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/admin-lte/dist/css/skins/skin-red.min.css" type="text/css"/>
+    <link rel="stylesheet" href="bower_components/jquery-ui/themes/base/jquery-ui.css" type="text/css"/>
+    <!-- endbuild -->
+    <!-- build:css({.tmp,app}) styles/style.css -->
+    <link rel="stylesheet" href="styles/loading.css">
+    <link rel="stylesheet" href="styles/hopscotch.min.css"/>
+    <link rel="stylesheet" href="styles/test.css"/>
+    <link rel="stylesheet" href="styles/datetimepicker/jquery.datetimepicker.css"/>
+    <!-- endbuild -->
+
+    <!-- HTML5 Shim and Respond.js IE8 support of HTML5 elements and media queries -->
+    <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
+    <!--[if lt IE 9]>
+        <script src="assets/js/html5shiv.min.js"></script>
+        <script src="assets/js/respond.min.js"></script>
+    <![endif]-->
+       <style>
+           #sortable1, #sortable {
+               border: 1px solid #eee;
+               width: 202px;
+               min-height: 20px;
+               list-style-type: none;
+               margin: 0;
+               padding: 5px 0 0 0;
+               float: left;
+               margin-right: 10px;
+           }
+           #sortable1 li, #sortable li {
+               margin: 0 5px 5px 5px;
+               padding: 5px;
+               font-size: 1.2em;
+               width: 200px;
+           }
+       </style>
+  </head>
+
+  <!-- Body -->
+<!-- appCtrl controller with serveral data used in theme on diferent view -->
+<body ng-controller="appCtrl" class="hold-transition skin-red sidebar-mini">
+
+    <!--[if lt IE 7]>
+    <p class="alert alert-danger">You are using an <strong>outdated</strong> browser. Please <a href="http://browsehappy.com/">upgrade your browser</a> to improve your experience.</p>
+    <![endif]-->
+    <!-- Header -->
+    <div id="header" ng-include="'views/common/header.html'"></div>
+    <!-- Navigation -->
+    <aside id="menu" ng-include="'views/common/navigation.html'"></aside>
+    <!-- Page view wrapper -->
+    <div id="wrapper" class="content-wrapper">
+        <div class="content" animate-panel effect="zoomIn">
+            <div class="uiview" ui-view>
+            </div>
+        </div>
+    </div>
+    <!-- Main Footer -->
+    <div id="footer" ng-include="'views/common/footer.html'" ></div>
+</body>
+
+
+
+  
+
+    <!-- build:js(.) scripts/vendor.js -->
+<script src="bower_components/jquery/dist/jquery.min.js"></script>
+<script src="bower_components/jquery-ui/jquery-ui.min.js"></script>
+<script src="bower_components/bootstrap/dist/js/bootstrap.min.js"></script>
+<script src="bower_components/admin-lte/dist/js/app.js"></script>
+
+
+<script src="bower_components/angular/angular.min.js"></script>
+<script src="bower_components/angular-ui-router/release/angular-ui-router.min.js"></script>
+<script src="bower_components/angular-bootstrap/ui-bootstrap-tpls.min.js"></script>
+<script src="bower_components/highcharts/highcharts.js"></script>
+<script src="bower_components/react/react.min.js"></script>
+<script src="bower_components/react/react-dom.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload-shim.min.js"></script>
+<script src="bower_components/ng-file-upload/ng-file-upload.min.js"></script>
+<script src="bower_components/jquery-form/jquery.form.js"></script>
+<!-- endbuild -->
+
+
+
+
+
+
+<!-- build:js({.tmp,app}) scripts/scripts.js -->
+
+<!-- admin_lte_custom fixes issues when templates are loaded dynamically using angular -->
+   <script src="scripts/datetimepicker/jquery.datetimepicker.js"></script>
+<script src="scripts/app.js"></script>
+<script src="scripts/map/map.js"></script>
+<script src="scripts/factory/api.js"></script>
+<script src="scripts/directives/directives.js"></script>
+<script src="scripts/controllers/test.js"></script>
+<script src="scripts/controllers/member.js"></script>
+<script src="scripts/controllers/memberDetail.js"></script>
+<script src="scripts/controllers/transaction/transaction-manager.js"></script>
+<script src="scripts/controllers/transaction/transaction-statistics.js"></script>
+<script src="scripts/hopscotch.min.js"></script>
+<script src="scripts/controllers/activity/marketingActivity.js"></script>
+<script src="scripts/controllers/activity/activityDetails.js"></script>
+<script src="scripts/controllers/file-example.js"></script>
+<script src="scripts/controllers/activity/creatActivity.js"></script>
+<script src="scripts/controllers/sorttable.js"></script>
+<!-- endbuild -->
+
+
+</html>
+
+

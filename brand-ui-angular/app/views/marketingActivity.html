@@ -1,0 +1,96 @@
+<section class="content-header">
+    <h1>
+        营销活动
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-hand-spock-o"></i> 营销</a></li>
+        <li class="active">营销活动</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="box box-default">
+        <form class="form-horizontal">
+            <div class="box-body">
+                <div class="form-group">
+                    <label for="inputType" class="col-md-1 control-label">活动类型</label>
+                    <div class="col-md-2">
+                    	<select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+	                      <option value="0" selected="selected"></option>
+	                      <option value="1">节日</option>
+	                      <option value="2">店庆</option>
+	                   	  <option value="3">首单</option>
+                    	</select>
+                    </div>
+                    <label for="inputSex" class="col-md-1 control-label">营销工具</label>
+                    <div class="col-md-2">
+                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                           <option value="0" selected="selected"></option>
+	                       <option value="1">优惠券</option>
+                        </select>
+                    </div>
+	                <label for="inputStartTime" class="col-md-1 control-label">状态</label>
+	                <div class="col-md-2">
+                        <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+                           <option value="0" selected="selected"></option>
+	                       <option value="1">待发布</option>
+	                       <option value="2">进行中</option>
+	                       <option value="3">已下架</option>
+	                       <option value="4">已结束</option>
+                        </select>
+                    </div>
+                    <div class="col-md-2"><a href="#/creatActivity" ><button type="button"  class="btn btn-info pull-right">新建活动</button></a></div>
+                    <br>
+                    <br>
+                    <br>
+                    <label for="inputStartTime" class="col-md-1 control-label">活动时间</label>
+	                <div class="col-md-5">
+                        <input  type="text" id="datetime_begin" value="" readonly/> -
+	                	<input  type="text" id="datetime_end" value="" readonly/>
+	                </div>
+                    <div class="col-md-1"><button type="submit" class="btn btn-info pull-right">查询</button></div>
+                    <div class="col-md-1"><button type="button" class="btn btn-info pull-right">重置</button></div>
+                    
+                </div>
+            </div>
+        </form>
+        <div class="box">
+               
+                <div class="box-body">
+                  <div id="example2_wrapper" class="dataTables_wrapper form-inline dt-bootstrap"><div class="row"><div class="col-sm-6"></div><div class="col-sm-6"></div></div><div class="row"><div class="col-sm-12"><table id="example2" class="table table-bordered table-hover dataTable" role="grid" aria-describedby="example2_info">
+                    <thead>
+                      <tr role="row">
+	                      <th class="sorting_asc" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" aria-sort="ascending" >ID</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >活动类型</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >活动名称</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >活动时间</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >营销工具</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >领取人数</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >适用次数</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >投放渠道</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >状态</th>
+	                      <th class="sorting" tabindex="0" aria-controls="example2" rowspan="1" colspan="1" >操作</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                    	<tr ng-repeat="act in actList | orderBy:predicate:reverse">
+		                    <td>{{$index+1}}</td>
+		                    <td><div class="page-col-common"><a href="" >{{act.actType}}</a></div>
+		                    <div class="page-col-common" ng-click="showDialogChart('count', page.pageType);"></div></td>
+		                    <td><div class="page-col-common">{{act.actName}}</div><div class="page-col-common" ></div></td>
+		                    <td><div class="page-col-common">{{act.actTime}}</div><div class="page-col-common" ></div></td>
+		                    <td><div class="page-col-common">{{act.actTool}}</div><div class="page-col-common" ></div></td>
+		                    <td><div class="page-col-common">{{act.getterSum}}</div><div class="page-col-common" ></div></td>
+	                      	<td><div class="page-col-common">{{act.useSum}}</div><div class="page-col-common" ></div></td>
+	                        <td><div class="page-col-common">{{act.channel}}</div><div class="page-col-common" ></div></td>
+	                        <td><div class="page-col-common">{{act.state}}</div><div class="page-col-common" ></div></td>
+		                   
+		                </tr>
+                    </tbody>
+                  </table></div></div><div class="row"><div class="col-sm-5"><div class="dataTables_info" id="example2_info" role="status" aria-live="polite">Showing 1 to 10 of 57 entries</div></div><div class="col-sm-7"><div class="dataTables_paginate paging_simple_numbers" id="example2_paginate"><ul class="pagination"><li class="paginate_button previous disabled" id="example2_previous"><a href="#" aria-controls="example2" data-dt-idx="0" tabindex="0">Previous</a></li><li class="paginate_button active"><a href="#" aria-controls="example2" data-dt-idx="1" tabindex="0">1</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="2" tabindex="0">2</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="3" tabindex="0">3</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="4" tabindex="0">4</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="5" tabindex="0">5</a></li><li class="paginate_button "><a href="#" aria-controls="example2" data-dt-idx="6" tabindex="0">6</a></li><li class="paginate_button next" id="example2_next"><a href="#" aria-controls="example2" data-dt-idx="7" tabindex="0">Next</a></li></ul></div></div></div></div>
+                </div><!-- /.box-body -->
+              </div>
+    </div>
+</section>
+
+
+

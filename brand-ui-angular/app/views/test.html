@@ -1,0 +1,108 @@
+<section class="content-header">
+    <h1>
+        例子页面
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-hand-spock-o"></i> 例子</a></li>
+        <li class="active">例子页面</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="col-xs-12">
+            <div class="box box-default">
+                <form class="form-horizontal">
+                    <div class="box-body">
+                        <div class="form-group">
+                            <label for="inputName" class="col-md-2 control-label">姓名</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="inputName" placeholder="姓名" style="width: 80%">
+                            </div>
+                            <label for="inputSex" class="col-md-2 control-label">性别</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="inputSex" placeholder="性别" style="width: 80%">
+                            </div>
+                            <br>
+                            <br>
+                            <label for="inputAge" class="col-md-2 control-label">年龄</label>
+                            <div class="col-md-4">
+                                <input type="text" class="form-control" id="inputAge" placeholder="年龄" style="width: 80%">
+                            </div>
+                            <div class="col-md-12"><button type="submit" class="btn btn-info pull-right">查询</button></div>
+                        </div>
+                    </div>
+                </form>
+                <div class="box-body">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                        <tr>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('pageType');">序号<div ng-class="page_style_pageType"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('count');">姓名<div ng-class="page_style_count"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('loadTime');">性别<div ng-class="page_style_loadTime"></div></a></th>
+                            <th><a class="none-decoration" href="" ng-click="sortPages('loadTime');">年龄<div ng-class="page_style_loadTime"></div></a></th>
+                        </tr>
+                        </thead>
+                        <tbody>
+                        <tr ng-repeat="user in userList | orderBy:predicate:reverse">
+                            <td>{{$index+1}}</td>
+                            <td><div class="page-col-common"><a href="" ng-click="detail(user.name, user.sex, user.age)">{{user.name}}</a></div><div class="page-col-common" ng-click="showDialogChart('count', page.pageType);"></div></td>
+                            <td><div class="page-col-common">{{user.sex}}</div><div class="page-col-common" ng-click="showDialogChart('count', page.pageType);"></div></td>
+                            <td><div class="page-col-common">{{user.age}}</div><div class="page-col-common" ng-click="showDialogChart('count', page.pageType);"></div></td>
+                        </tr>
+                        </tbody>
+                    </table>
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="box box-default">
+                <div class="box-header">
+                    <h3 class="box-title">复选例子</h3>
+                </div>
+                <div class="box-body">
+                    <div class="col-md-2"></div>
+                    <div class="col-md-3">
+                        <select multiple ng-model="leftData.selectedOptions" ng-options="option.id as option.name for option in leftData.availableOptions  | orderBy : 'id'" class="form-control" style="height:330px;margin-top: 5px;">
+                        </select>
+                    </div>
+                    <div class="col-md-2">
+                        <div style="height: 50px;text-align: center"><button style="margin-top: 65px;" class="btn btn-primary" ng-click="moveOptions(leftData, rightData, true)">全部右移</button></div>
+                        <div style="height: 50px;text-align: center"><button style="margin-top: 55px;" class="btn btn-primary" ng-click="moveOptions(leftData, rightData)">右移选中</button></div>
+                        <div style="height: 50px;text-align: center"><button style="margin-top: 45px;" class="btn btn-primary" ng-click="moveOptions(leftData, rightData, false, true)">右移未选</button></div>
+                        <div style="height: 50px;text-align: center"><button style="margin-top: 65px;" class="btn btn-danger" ng-click="moveOptions(rightData, leftData, false, true)">左移未选</button></div>
+                        <div style="height: 50px;text-align: center"><button style="margin-top: 55px;" class="btn btn-danger" ng-click="moveOptions(rightData, leftData)">左移选中</button></div>
+                        <div style="height: 50px;text-align: center"><button style="margin-top: 45px;" class="btn btn-danger" ng-click="moveOptions(rightData, leftData, true)">全部左移</button></div>
+                    </div>
+                    <div class="col-md-3">
+                        <select multiple ng-model="rightData.selectedOptions" ng-options="option.id as option.name for option in rightData.availableOptions | orderBy : 'id'" class="form-control" style="height:330px;margin-top: 5px;;">
+                        </select>
+                    </div>
+                    <div class="col-md-2"></div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>
+<div ng-class="{'modal fade in':model_in_edit}" ng-style="model_style_edit" style="display:none">
+    <div class="modal-dialog page-dialog" style="width:80%;height: 80%;margin-top: 300px;">
+        <div class="modal-content">
+            <div class="modal-header" style="border-bottom: 0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">×</button>
+                <h4 class="modal-title">详细信息<small>{{name}}</small></h4>
+            </div>
+            <div class="modal-body">
+                <div class="col-md-6">姓名：{{userDetail.name}}</div>
+                <div class="col-md-6">性别：{{userDetail.sex}}</div>
+                <div class="col-md-6">年龄：{{userDetail.age}}</div>
+                <div class="col-md-6">姓名：{{userDetail.name}}</div>
+                <div class="col-md-6">性别：{{userDetail.sex}}</div>
+                <div class="col-md-6">年龄：{{userDetail.age}}</div>
+            </div>
+            <div class="modal-footer">
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="close()">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+<div ng-class="{'modal-backdrop fade in':model_background_in}" ng-style="model_background_style" style="display: none"></div>
+<div ng-class="{'modal-backdrop fade in':model_background_in_loading}" ng-style="model_background_style_loading" style="display:none"></div>

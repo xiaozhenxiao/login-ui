@@ -1,0 +1,120 @@
+<section class="content-header">
+    <h1>
+        会员详情
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa  fa-balance-scale"></i> 会员</a></li>
+        <li class="active">会员详情</li>
+    </ol>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-default" id="user_right">
+            <div class="col-md-3">
+                <div class="box box-primary">
+                    <div class="box-body box-profile" style="height: 243px;">
+                        <img class="profile-user-img img-responsive img-circle" src="../../images/a4.jpg" >
+                        <h3 class="profile-username text-center">{{user.name}}</h3>
+                        <p ng-if="user.wxId != null" class="text-muted text-center btn btn-primary btn-block">微信会员</p>
+                        <p ng-if="user.phone != null" class="text-muted text-center btn btn-primary btn-block">手机会员</p>
+                    </div>
+                </div>
+            </div>
+            <div class="col-md-9">
+                    <div ng-if="user.gender==0" class="list-group-item">性别：男</div>
+                    <div ng-if="user.gender==1" class="list-group-item">性别：女</div>
+                    <div ng-if="user.gender==2" class="list-group-item">性别：保密</div>
+                    <div class="list-group-item">爱好：</div>
+                    <div class="list-group-item">手机号：{{user.phone}}</div>
+                    <div class="list-group-item">注册时间：{{user.createTime}}</div>
+                    <div class="list-group-item">最近消费时间：{{lastTime}}</div>
+                    <div class="list-group-item">已有{{diff}}天未到店消费</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="content">
+    <div class="row">
+        <div class="box box-default" id="speed_page_detail">
+            <div class="box-header">
+                <h3 class="box-title"> 消费数据统计</h3>
+                <div class="box-tools pull-right">
+                    <button class="btn btn-box-tool" data-widget="collapse"><i class="fa fa-minus"></i>收起</button>
+                    <button class="btn btn-box-tool" data-widget="remove"><i class="fa fa-times"></i>关闭</button>
+                </div>
+                <li class="list-group-item">
+                    <b>&nbsp;</b>
+                    <select class="pull-right" id="tongjiTime" ng-change="qureyMemberDetail(brandId,user.id,x,page);" ng-model="x">
+                        <option value="0" ng-selected="true">近一个月</option>
+                        <option value="1">近三个月</option>
+                    </select>
+                </li>
+            </div>
+            <div class="box-body" style="text-align: center">
+                <div id="report1" class="col-md-3 col-sm-6 col-xs-12" style="height: 300px;"></div>
+                <div id="report2" class="col-md-3 col-sm-6 col-xs-12" style="height: 300px;"></div>
+                <div id="report3" class="col-md-3 col-sm-6 col-xs-12" style="height: 300px;"></div>
+                <div id="report4" class="col-md-3 col-sm-6 col-xs-12" style="height: 300px;"></div>
+            </div>
+        </div>
+        <div class="box box-success">
+            <div class="box-header">
+                <h3 class="box-title">消费记录</h3>
+            </div>
+            <div class="box-body">
+                <table class="table table-bordered table-hover">
+                    <thead>
+                    <tr>
+                        <th>序号</th>
+                        <th><a class="none-decoration" href="" ng-click="sortPages('transaction_id');">交易编号</a></th>
+                        <th><a class="none-decoration" href="" ng-click="sortPages('transaction_time');">消费时间</a></th>
+                        <th><a class="none-decoration" href="" ng-click="sortPages('transaction_money');">消费金额</a></th>
+                        <th><a class="none-decoration" href="" ng-click="sortPages('market_type');">营销活动</a></th>
+                        <th><a class="none-decoration" href="" ng-click="sortPages('pay_type');">支付方式</a></th>
+                        <th><a class="none-decoration" href="" ng-click="sortPages('status');">交易状态</a></th>
+                    </tr>
+                    </thead>
+                    <tbody>
+                    <tr ng-repeat="record in records | orderBy:predicate:reverse">
+                        <td>{{$index+1}}</td>
+                        <td><div class="page-col-common">{{record.consumId}}</div></td>
+                        <td><div class="page-col-common">{{record.time}}</div></td>
+                        <td><div class="page-col-common">{{record.money}}</div></td>
+                        <td><div class="page-col-common">{{record.marketing}}</div></td>
+                        <td><div class="page-col-common">{{record.payType}}</div></td>
+                        <td><div class="page-col-common">{{record.payStatus}}</div></td>
+                    </tr>
+                    </tbody>
+                </table>
+            </div>
+            <div class="col-sm-7">
+                <div>共 {{pageCount}} 页</div>
+                <div class="dataTables_paginate paging_simple_numbers" id="example2_paginate">
+                    <ul class="pagination" ng-repeat="pn in pageNum">
+                        <li ng-if="page==1&& $index==0" class="paginate_button previous disabled" id="example2_previous"><a
+                                aria-controls="example2"
+                                data-dt-idx="0" tabindex="0">上一页</a>
+                        </li>
+                        <li ng-if="page!=1&& $index==0" ng-click="qureyMemberDetail(brandId,user.id,tongjiTime,page-1);" class="paginate_button previous" id="example_previous"><a
+                                aria-controls="example2"
+                                data-dt-idx="0" tabindex="0">上一页</a>
+                        </li>
+                        <li ng-if="pn==page" class="paginate_button active"><a aria-controls="example2" data-dt-idx="1"
+                                                                               tabindex="0">{{pn}}</a></li>
+                        <li ng-if="pn!=page" class="paginate_button"><a ng-click="qureyMemberDetail(brandId,user.id,tongjiTime,pn);" aria-controls="example2" data-dt-idx="1"
+                                                                        tabindex="0">{{pn}}</a></li>
+
+                        <li ng-if="$index==9&&page!=pageCount" ng-click="qureyMemberDetail(brandId,user.id,tongjiTime,page+1);" class="paginate_button next" id="example2_next"><a aria-controls="example2" data-dt-idx="7"
+                                                                                                                                                                                                tabindex="0">下一页</a></li>
+                        <li ng-if="pageCount<10&&pn==pageCount&&page<pageCount" ng-click="qureyMemberDetail(brandId,user.id,tongjiTime,page+1);" class="paginate_button next" id="example0_next"><a aria-controls="example2" data-dt-idx="7"
+                                                                                                                                                                                                                 tabindex="0">下一页</a></li>
+                        <li ng-if="$index==9&&page==pageCount" class="paginate_button next disabled" id="example1_next"><a aria-controls="example2" data-dt-idx="7"
+                                                                                                                           tabindex="0">下一页</a></li>
+                        <li ng-if="pageCount<10&&pn==pageCount&&page==pageCount" class="paginate_button next disabled" id="example_next"><a aria-controls="example2" data-dt-idx="7"
+                                                                                                                                            tabindex="0">下一页</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

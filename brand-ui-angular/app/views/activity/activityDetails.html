@@ -1,0 +1,125 @@
+<section class="content-header">
+    <h1>
+        活动详情
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-hand-spock-o"></i> 营销</a></li>
+        <li class="active">营销活动</li>
+        <li class="active">活动活动详情</li>
+    </ol>
+</section>
+<section class="content">
+	<div class="box box-default">
+		<form class="form-horizontal">
+			<div class="box-body">
+				<div class="form-group">
+					<div class="col-md-8">
+		              <!-- Custom Tabs -->
+		              <div class="nav-tabs-custom">
+		                <ul class="nav nav-tabs">
+		                  <li ><a ng-click="tab('a');" href="" data-toggle="tab" >活动详情</a></li>
+		                  <li ><a ng-click="tab('b');" href="" data-toggle="tab" >营销效果</a></li>
+		                </ul>
+		                <div class="tab-content">
+		                  <div class="tab-pane show" ng-class="{true: 'show', false: 'hide'}[aisActive]" id="tab_1">
+		                  	<div style="height: 10px"></div>
+		                  	<label class="col-md-3 control-label">活动类型</label>
+		                  	<div class="col-md-3">
+			                  	<input type="text" class="form-control" id="inputAge" >
+		                  	</div>
+		                  	<div style="height:50px"></div>
+							<label  class="col-md-3 control-label">活动名称</label>
+		                    <div class="col-md-3">
+		                    	<input type="text" class="form-control" id="inputSex" placeholder="性别" style="width: 80%">
+		                    </div>
+							<!--  <div style="height:50px"></div>
+							<label class="col-md-3 control-label">活动图片</label>
+							<div class="col-md-3">
+			                    <img height="100" width="100" src="/i/eg_tulip.jpg"  alt="上海鲜花港 - 郁金香" />
+							</div>-->
+							<div style="height:50px"></div>
+	                   		<label class="col-md-3 control-label">活动对象</label>
+		                    <div class="col-md-3">
+		                       <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+			                      <option value="0" selected="selected"></option>
+			                      <option value="1">节日</option>
+			                      <option value="2">店庆</option>
+			                   	  <option value="3">首单</option>
+		                    	</select>
+		                    </div>
+		                   	<div style="height:50px"></div>
+	                   		<label for="inputStartTime" class="col-md-3 control-label">活动时间</label>
+			                <div class="col-md-9">
+		                        <input ng-click="a()"  type="text" id="datetime_begin" value="" readonly/> 至
+			                	<input  type="text" id="datetime_end" value="" readonly/>
+			                </div>
+		                  	<div style="height:50px"></div>
+		                   	
+	                   		<label class="col-md-3 control-label">适用门店</label>
+		                    <div class="col-md-3">
+		                       <select class="form-control select2 select2-hidden-accessible" style="width: 100%;" tabindex="-1" aria-hidden="true">
+			                      <option value="0" selected="selected"></option>
+			                      <option value="1">节日</option>
+			                      <option value="2">店庆</option>
+			                   	  <option value="3">首单</option>
+		                    	</select>
+		                    </div>
+		                   	
+		                    <div style="height:50px"></div>
+	                   		<label class="col-md-3 control-label">活动说明</label>
+                   			<div class="col-md-6">
+                   				<textarea class="form-control" rows="3" cols="20"></textarea>
+                    		</div>
+	                   		<div style="height:100px"></div>
+	                   		<label class="col-md-3 control-label">状态</label>
+	                   		<div class="col-md-3">
+		                   		<input type="text" class="form-control" >
+	                   		</div>
+	                   		<div style="height:50px"></div>
+		                   	<div class="col-md-12">
+		                   		<div class="col-md-4"></div>
+		               		    <div class="col-md-2">
+		               		  		<a href="#/marketingActivity"><button class="btn btn-block btn-primary" >提交</button></a>
+		               		  	</div>
+		               		  	<div class="col-md-2">
+		               		  		<a href="#/marketingActivity"><button class="btn btn-block btn-primary" >返回</button></a>
+		               		  	</div>
+		                   	</div>
+	                   		<br>
+	                   		<br>
+		                  </div><!-- /.tab-pane -->
+		                  <div class="tab-pane" ng-class="{true: 'show', false: 'hide'}[bisActive]" id="tab_2">
+		                    
+		                  </div><!-- /.tab-pane -->
+		                </div><!-- /.tab-content -->
+		              </div><!-- nav-tabs-custom -->
+            		</div>
+				</div>
+			</div>
+		</form>
+	</div>
+	<div ng-class="{'modal fade in':model_in_edit_fb}" ng-style="model_style_edit" style="display:none">
+    <div class="modal-dialog page-dialog" style="width:30%;height: 40%;margin-top: 300px;">
+        <div class="modal-content" style="border-radius:5px;">
+            <div class="modal-header" style="border-bottom: 0px;">
+                <button type="button" class="close" data-dismiss="modal" aria-hidden="true" ng-click="close()">×</button>
+                <h4 class="modal-title">请选择投放渠道</h4>
+            </div>
+            <div class="modal-body">
+            	<div class="checkbox">
+			      <label>
+			      	<input type="checkbox"> 短信
+			      </label>
+			      <label>
+			      	<input type="checkbox"> 微信
+			      </label>
+			    </div>
+         	</div>
+            <div class="modal-footer">
+            <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="close()">确定</button>
+                <button type="button" class="btn btn-default" data-dismiss="modal" ng-click="close()">关闭</button>
+            </div>
+        </div>
+    </div>
+</div>
+</section>

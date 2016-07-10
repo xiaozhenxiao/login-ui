@@ -1,0 +1,32 @@
+<section class="content-header">
+    <h1>
+        拖拽排序demo
+    </h1>
+    <ol class="breadcrumb">
+        <li><a href=""><i class="fa fa-hand-spock-o"></i> 拖拽排序</a></li>
+        <li class="active">拖拽排序demo</li>
+    </ol>
+</section>
+<section class="content">
+        <div class="row">
+            <div class="col-md-3 col-sm-6 col-xs-12" style="background-color:#FFEFD5;">
+                <div class="box-header with-border"><h1 class="box-title">未选门店</h1></div>
+                <ul id="sortable" style="float:none;" class="connectedSortable">
+                    <li ng-repeat="key in keySet" class="ui-state-default" id="a_{{key}}"><span>{{key}}</span></li>
+                </ul>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12" style="width:200px; height:500px">
+                <div>
+                    <button class="btn btn-block btn-info btn-lg" style="top:50%;height:200px;margin-top:150px;">
+                        拖拽到右边选中
+                    </button>
+                </div>
+            </div>
+            <div class="col-md-3 col-sm-6 col-xs-12" style="background-color:#90EE90;">
+                <div class="box-header with-border"><h1 class="box-title">已选门店</h1></div>
+                <ul id="sortable1" style="float:none;" class="connectedSortable">
+                    <li ng-repeat="key in keySet2" class="ui-state-highlight" id="b_{{key}}"><span>{{key}}</span></li>
+                </ul>
+            </div>
+        </div>
+</section>

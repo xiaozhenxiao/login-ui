@@ -1,0 +1,144 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!--suppress ALL -->
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.hanyun.platform.brand.ui.dao.BrandUserDao">
+    <resultMap id="BaseResultMap" type="com.hanyun.platform.brand.ui.domain.BrandUser">
+        <id column="id" property="id" jdbcType="BIGINT"/>
+        <result column="brand_user_id" property="brandUserId" jdbcType="VARCHAR"/>
+        <result column="brand_id" property="brandId" jdbcType="VARCHAR"/>
+        <result column="store_id" property="storeId" jdbcType="VARCHAR"/>
+        <result column="username" property="username" jdbcType="VARCHAR"/>
+        <result column="password" property="password" jdbcType="VARCHAR"/>
+        <result column="user_type" property="userType" jdbcType="BIT"/>
+        <result column="contacts" property="contacts" jdbcType="VARCHAR"/>
+        <result column="contacts_phone" property="contactsPhone" jdbcType="VARCHAR"/>
+        <result column="contacts_mail" property="contactsMail" jdbcType="VARCHAR"/>
+        <result column="create_time" property="createTime" jdbcType="TIMESTAMP"/>
+        <result column="update_time" property="updateTime" jdbcType="TIMESTAMP"/>
+    </resultMap>
+    <sql id="Base_Column_List">
+        id, brand_user_id, brand_id, store_id, username, password, user_type, contacts, contacts_phone, contacts_mail, create_time, update_time
+    </sql>
+    <select id="select" resultMap="BaseResultMap" parameterType="com.hanyun.platform.brand.ui.domain.BrandUser">
+        SELECT 
+        <include refid="Base_Column_List"/>
+        FROM brand_user
+        <where>
+            <if test="id != null">
+                AND id = #{id,jdbcType=BIGINT}
+            </if>
+            <if test="brandUserId != null">
+                AND brand_user_id = #{brandUserId,jdbcType=VARCHAR}
+            </if>
+            <if test="brandId != null">
+                AND brand_id = #{brandId,jdbcType=VARCHAR}
+            </if>
+            <if test="storeId != null">
+                AND store_id = #{storeId,jdbcType=VARCHAR}
+            </if>
+            <if test="username != null">
+                AND username = #{username,jdbcType=VARCHAR}
+            </if>
+            <if test="password != null">
+                AND password = #{password,jdbcType=VARCHAR}
+            </if>
+        </where>
+    </select>
+    <insert id="insertSelective" parameterType="com.hanyun.platform.brand.ui.domain.BrandUser">
+        INSERT INTO brand_user
+        <trim prefix="(" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                id,
+            </if>
+            <if test="brandUserId != null">
+                brand_user_id,
+            </if>
+            <if test="brandId != null">
+                brand_id,
+            </if>
+            <if test="storeId != null">
+                store_id,
+            </if>
+            <if test="username != null">
+                username,
+            </if>
+            <if test="password != null">
+                password,
+            </if>
+            <if test="userType != null">
+                user_type,
+            </if>
+            <if test="contacts != null">
+                contacts,
+            </if>
+            <if test="contactsPhone != null">
+                contacts_phone,
+            </if>
+            <if test="contactsMail != null">
+                contacts_mail,
+            </if>
+            create_time,update_time
+        </trim>
+        <trim prefix="values (" suffix=")" suffixOverrides=",">
+            <if test="id != null">
+                #{id,jdbcType=BIGINT},
+            </if>
+            <if test="brandUserId != null">
+                #{brandUserId,jdbcType=VARCHAR},
+            </if>
+            <if test="brandId != null">
+                #{brandId,jdbcType=VARCHAR},
+            </if>
+            <if test="storeId != null">
+                #{storeId,jdbcType=VARCHAR},
+            </if>
+            <if test="username != null">
+                #{username,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                #{userType,jdbcType=BIT},
+            </if>
+            <if test="contacts != null">
+                #{contacts,jdbcType=VARCHAR},
+            </if>
+            <if test="contactsPhone != null">
+                #{contactsPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="contactsMail != null">
+                #{contactsMail,jdbcType=VARCHAR},
+            </if>
+            NOW(),NOW()
+        </trim>
+    </insert>
+    <update id="updateByPrimaryKeySelective" parameterType="com.hanyun.platform.brand.ui.domain.BrandUser">
+        UPDATE brand_user
+        <set>
+            <if test="brandId != null">
+                brand_id = #{brandId,jdbcType=VARCHAR},
+            </if>
+            <if test="storeId != null">
+                store_id = #{storeId,jdbcType=VARCHAR},
+            </if>
+            <if test="password != null">
+                password = #{password,jdbcType=VARCHAR},
+            </if>
+            <if test="userType != null">
+                user_type = #{userType,jdbcType=BIT},
+            </if>
+            <if test="contacts != null">
+                contacts = #{contacts,jdbcType=VARCHAR},
+            </if>
+            <if test="contactsPhone != null">
+                contacts_phone = #{contactsPhone,jdbcType=VARCHAR},
+            </if>
+            <if test="contactsMail != null">
+                contacts_mail = #{contactsMail,jdbcType=VARCHAR},
+            </if>
+            update_time = NOW()
+        </set>
+        WHERE brand_user_id = #{brandUserId,jdbcType=VARCHAR}
+    </update>
+</mapper>
